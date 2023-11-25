@@ -1,0 +1,61 @@
+<!-- Extends the html -->
+{% extends 'store/layouts/main.html' %}
+{% block content %}
+  {% include 'store/inc/slider.html' %}
+
+  <div class="py-5 m-2">
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Trending Items</h1>
+          <hr>
+
+          <div class="row mt-3">
+            {% for item in trend %}
+            <div class="col-md-3 mt-3">
+              <div class="card product_data">
+                <a href="{% url 'productview' item.category.slug item.slug %}">
+                  <div class="card-body">
+                    <div class="catogery-image">
+                      <img src="{{item.product_image.url}}" alt="product-image" height="150px" width="150px" class="w-100">
+                    </div>
+                    <h4 class="text-center">{{item.name}}</h4>
+                </a>
+                    <span class="float-left"><s>Rs {{item.selling_price | stringformat:'d'}}</s></span>
+                    <span class="float-right">Rs {{item.selling_price | stringformat:'d'}}</span>
+                    <br>
+                <div class="row mt-2 px-0">
+                  <div class="col-md-6 mt-3">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{item.id}}" class="prod_id">
+                    <!-- <label for="">quantity</label> -->
+                    <div class="input-group" style="width: 130px;" >
+                      <button class="input-group-text decrement-btn">-</button>
+                      <input type="text" name="quantity" class="form-control text-center qty-input" value="1">
+                      <button class="input-group-text increment-btn">+</button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                  
+                    {% if item.quantity > 0 %}
+                  <button type="button" class="btn btn-primary mt-3 p-2 pt-1 float-right badge addtocartbtn">Add Cart <i class="bi bi-cart-dash"></i></button>
+                    {% else %}
+                  <button type="button" class="btn btn-danger mt-3 p-2 float-right badge addtocartbtn disabled">Out of Stock</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  {% endblock content %}

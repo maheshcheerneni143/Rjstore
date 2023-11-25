@@ -1,0 +1,12 @@
+
+<div class="w-100 ml-5">
+   <form action="{% url 'searchproduct' %}" method="post">
+    {% csrf_token %}
+     <div class="input-group">
+     <input type="search" class="form-control" placeholder="productname" name="searchproductname" id="searchproducts" aria-label="productname"class="w-50 ">
+     <button type="submit class
+     input-group-text"><i class="bi bi-search"></i></button>
+     </div>
+  </form>
+
+ </div>

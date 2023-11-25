@@ -1,0 +1,18 @@
+.search-bar {
+ width: 40% !important;
+ margin: 30% !important;
+}
+
+.checkoutform label {
+ font-size: 14px;
+ font-weight: bold;
+}
+
+.checkoutform input {
+ font-size: 14px;
+ font-family: "roboto";
+ font-style: inherit;
+}
+.body{
+ background-color: blue;
+}
