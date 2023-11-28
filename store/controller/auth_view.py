@@ -23,7 +23,7 @@ def register(request):
 def Login(request):
     if request.user.is_authenticated:
         messages.warning(request,'You are allready Logged In..')
-        return redirect('/home/')
+        return redirect('/')
     else:
         if request.method == "POST":
             name = request.POST.get('username')
@@ -32,7 +32,7 @@ def Login(request):
             if user is not None:
                 login(request,user)
                 messages.success(request,'You are Logged In Successfully..')
-                return redirect('/home/')
+                return redirect('/')
             else:
                 messages.error(request,'You are Entered Invalid useraname and password')
                 return redirect('/login')
@@ -42,4 +42,4 @@ def Logout(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request,'You are Logged Out Successfully..')
-    return redirect('/home/')
+    return redirect('/')
