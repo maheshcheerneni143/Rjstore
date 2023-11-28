@@ -5,7 +5,7 @@ from store.controller import auth_view ,cart,wishlist,checkout,orders
 
 urlpatterns = [
 #  genaral
-    path('home/',views.store,name='home'),
+    path('',views.store,name='home'),
     path('collections/',views.collection,name='collections'),
     path('collectionsview/<str:slug>',views.collectionview,name='collectionsview'),
     path('collections/<str:cat_slug>/<str:prod_slug>',views.productview,name='productview'),
